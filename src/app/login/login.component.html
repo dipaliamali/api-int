@@ -1,0 +1,61 @@
+<section>
+    <div class="container">
+        <h2>Login Form</h2>
+        <form [formGroup]="myForm" class="justify-content-center" (ngSubmit)="onSubmitForm()">
+
+           
+            <div class="form-group">
+                <label>Email :-<span style="color: red">*</span> </label>
+                <input type="email" class="form-control" formControlName="email"
+                    placeholder="Please enter your email here" required
+                    [ngClass]="{ 'is-invalid': isSubmitted && f.email.errors }" />
+                <div *ngIf="isSubmitted && f.email.errors?.pattern" class="invalid-feedback">
+                    Email is not valid
+                </div>
+            </div>
+            <br />
+            <br />
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" formControlName="password" required
+                    [ngClass]="{'is-invalid':isSubmitted && f.password.errors}" placeholder="Password is required">
+                <div *ngIf="isSubmitted && f.password.errors?.required" class="invalid-feedback"><span
+                        style="color: red;"> Password Is Required*</span></div>
+                <div *ngIf="isSubmitted && f.password.errors?.minlength" class="invalid-feedback"><span
+                    style="color: red;"> Password at least 8
+                    character.</span></div>
+                </div>
+
+            <div class="form-group">
+                <input type="submit" value="login" class="btn btn-info mt-3">
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<!-- <table class="table table-align middle">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Color</th>
+      <th>Name</th>
+      <th>PantoneValue</th>
+    </tr>
+
+    <tr *ngFor="let dt of user">
+      <td>{{ dt.id }}</td>
+      <td>{{ dt.name }}</td>
+      <td>{{ dt.year }}</td>
+      <td>{{ dt.color }}</td>
+      <td>{{ dt.pantone_value }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="edit_btn_fun(dt.id)">
+          Edit
+        </button>
+      </td>
+    </tr>
+  </table>
+</div> -->

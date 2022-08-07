@@ -1,0 +1,27 @@
+<button class="btn btn-primary" (click)="addData()">Add Data</button><br><br>
+
+<div class="container">
+
+
+    <h3>Table Data</h3>
+
+    <table class="table table-align middle ">
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Avatar</th>
+        </tr>
+
+        <tr *ngFor="let dt of user">
+            <td>{{dt.id}}</td>
+            <td>{{dt.email}}</td>
+            <td>{{dt.first_name}}</td>
+            <td>{{dt.last_name}}</td>
+            <td><img src="{{dt.avatar}}" alt="" srcset="" class="xyz"></td>
+            <td><button class="btn btn-danger" (click)="delete_btn_fun(dt.id)">Delete</button></td> 
+           
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,145 @@
+<section>
+  <div class="container" *ngIf="enableForm">
+    <h2 style="color: green; text-align: center">Registration Form</h2>
+    <form [formGroup]="regForm" (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          formControlName="name"
+          required
+          [ngClass]="{ 'is -invalid': isSubmitted && f.name.errors }"
+        />
+        <div
+          *ngIf="isSubmitted && f.name.errors?.required"
+          class="invalid-feedback"
+        >
+          Enter Your Name
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Job</label>
+        <input
+          type="text"
+          class="form-control"
+          name="job"
+          formControlName="job"
+          required
+          [ngClass]="{ 'is -invalid': isSubmitted && f.job.errors }"
+        />
+        <div
+          *ngIf="isSubmitted && f.job.errors?.required"
+          class="invalid-feedback"
+        >
+          Enter Your Job
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-info" />
+        <input type="reset" value="Reset" class="btn btn-primary m-3" />
+      </div>
+    </form>
+  </div>
+</section>
+
+<section>
+  <div class="container" *ngIf="enableFormedit">
+    <h2 style="color: green; text-align: center">Update Form</h2>
+    <form [formGroup]="regForm" (ngSubmit)="onSubmitFormUpdate()">
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          formControlName="name"
+          required
+          [ngClass]="{ 'is -invalid': isSubmitted && f.name.errors }"
+        />
+        <div
+          *ngIf="isSubmitted && f.name.errors?.required"
+          class="invalid-feedback"
+        >
+          Enter Your Name
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Job</label>
+        <input
+          type="text"
+          class="form-control"
+          name="job"
+          formControlName="job"
+          required
+          [ngClass]="{ 'is -invalid': isSubmitted && f.job.errors }"
+        />
+        <div
+          *ngIf="isSubmitted && f.job.errors?.required"
+          class="invalid-feedback"
+        >
+          Enter Your Job
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-info" />
+        <input type="reset" value="Reset" class="btn btn-primary m-3" />
+      </div>
+    </form>
+  </div>
+</section>
+
+<div class="container" *ngIf="enableForm && displayData">
+  <h3>Table Data</h3>
+
+  <table class="table table-align middle">
+    <tr>
+      <th>Name</th>
+      <th>Job</th>
+      <th>Id</th>
+      <th>CreatedAt</th>
+    </tr>
+
+    <tr *ngFor="let dt of user">
+      <td>{{ dt.name }}</td>
+      <td>{{ dt.job }}</td>
+      <td>{{ dt.id }}</td>
+      <td>{{ dt.createdAt }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="edit_btn_fun(dt.id)">
+          Edit
+        </button>
+      </td>
+
+    </tr>
+  </table>
+</div>
+<div class="container" *ngIf="enableFormedit && displayDataAfterEdit">
+  <h3>Table Data</h3>
+
+  <table class="table table-align middle">
+    <tr>
+      <th>Name</th>
+      <th>Job</th>
+
+      <th>UpdatedAt</th>
+    </tr>
+
+    <tr *ngFor="let dt of userEdited">
+      <td>{{ dt.name }}</td>
+      <td>{{ dt.job }}</td>
+
+      <td>{{ dt.updatedAt }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="edit_btn_fun(dt.id)">
+          Edit
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
