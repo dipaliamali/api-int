@@ -32,15 +32,10 @@ export class LoginComponent implements OnInit {
   this.info.userlogin(this.myForm.value).subscribe((res:any)=>{
     console.log(res);
   
-    if(res.token=true){
+    if(res.token){
       this.router.navigate(['userdata']) 
     }
-   else
-   {
-    console.log(this.myForm.value);
-    }
-  
-  },
+   },
   (err: any) => console.log(err)
 );
   }
